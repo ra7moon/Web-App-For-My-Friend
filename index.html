@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DEBT APP</title>
+    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="css/arabic.css" />
+    <script src="js/script.js" defer></script>
+  </head>
+  <body>
+    <div class="filter">
+      <p id="sum">0 YR</p>
+      <button id="sami">سامي</button> <button id="bassam">بسام</button>
+      <button id="baleg">بليغ</button> <button id="mhmd">محمد</button>
+      <button id="home">البيت</button> <button id="newPurchase">الكل</button>
+      <button id="FilterByDate">بحث</button>
+      <input type="date" id="chooseDate" />
+    </div>
+    <div class="info">
+      <table>
+        <thead id="table-Header"></thead>
+        <tbody id="table-body"></tbody>
+      </table>
+    </div>
+    <form class="animate">
+      <h1>
+        إضافة<br />
+        عملية شراء جديدة
+      </h1>
+      <fieldset>
+        <legend>تاريخ الشراء</legend>
+        <input type="date" placeholder="تاريخ الشراء" id="date" required />
+      </fieldset>
+      <fieldset>
+        <legend>وقت الشراء</legend>
+        <input type="text" placeholder="وقت الشراء" id="time" required />
+      </fieldset>
+      <fieldset>
+        <legend>اسم المشتري</legend>
+        <input type="text" placeholder="اسم المشتري" id="name" required />
+      </fieldset>
+      <fieldset>
+        <legend>اسم البضاعة</legend>
+        <input type="text" placeholder="اسم البضاعة" id="purchase" required />
+      </fieldset>
+      <fieldset>
+        <legend>السعر</legend>
+        <input type="number" placeholder="السعر" id="price" required />
+      </fieldset>
+      <div class="form-buttons">
+        <button type="submit" id="submit">إضافة</button>
+        <!-- <button id="cancel">إلغاء</button> -->
+      </div>
+    </form>
+  </body>
+</html>

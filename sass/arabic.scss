@@ -1,0 +1,241 @@
+$bold-font: "bukra bold";
+$light-font: "bukra light";
+$normal-font: "bukra normal";
+@import "reset";
+//// Customize Colors
+$form-bg-color: rgb(190, 190, 190);
+$border-color: rgba(255, 255, 255, 0.822);
+$button-bg-color: rgb(30, 94, 124);
+$button-font-color: rgb(255, 255, 255);
+$legend-color: rgb(0, 194, 201);
+$table-raw-bg: rgb(238, 238, 238);
+$edit-bg: rgb(221, 75, 38);
+$done-bg: rgb(13, 196, 171);
+$edit-highlied: rgb(247, 233, 216);
+//
+$inputs-width: 20rem;
+$padding-right: 3rem;
+body {
+  background-color: rgb(255, 255, 255);
+}
+
+.filter {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1000;
+  min-width: 100vw;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.521),
+    rgb(255, 255, 255)
+  );
+  backdrop-filter: blur(6rem);
+  padding: 4rem 0 2rem 14rem;
+  box-shadow: 0 0 7rem rgba(238, 238, 238, 0.637);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: $padding-right;
+  #newPurchase {
+    margin-right: 0.5rem;
+  }
+  #chooseDate {
+    border: 1px $button-bg-color solid;
+    border-left: none;
+    min-width: 20rem;
+  }
+  p {
+    font-size: 4rem;
+    font-family: "Roboto";
+    font-weight: bold;
+    margin-right: 3rem;
+    color: $legend-color;
+  }
+}
+
+button,
+input[type="submit"] {
+  border: 1px $button-bg-color solid;
+  outline: none;
+  padding: 1rem 2rem;
+  background: $button-bg-color;
+  color: $button-font-color;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  &:hover {
+    color: $button-bg-color;
+    background: transparent;
+  }
+}
+
+button#edit {
+  padding: 0.33rem 1rem;
+  background: $edit-bg;
+  border-color: $edit-bg;
+  &:hover {
+    color: $button-bg-color;
+    background: transparent;
+  }
+}
+
+button#done {
+  padding: 0.33rem 1rem;
+  background: $done-bg;
+  border-color: $done-bg;
+  &:hover {
+    color: $button-bg-color;
+    background: transparent;
+  }
+}
+
+form {
+  position: fixed;
+  bottom: 0;
+  margin: 0 auto;
+  width: auto;
+  padding: 6rem 3rem 7rem;
+  border-right: 1px solid $form-bg-color;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  input {
+    display: block;
+    width: $inputs-width;
+  }
+}
+
+h1 {
+  text-align: right;
+  margin-bottom: 2rem;
+  color: $legend-color;
+}
+
+.top,
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+fieldset {
+  border-radius: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+legend {
+  padding: 0 0.5rem;
+  margin-right: 3rem;
+  text-align: right;
+  color: $legend-color;
+  font-family: $bold-font;
+}
+
+input {
+  font-family: $normal-font;
+  padding: 0.5rem 1rem 1rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  text-align: right;
+}
+
+.form-buttons {
+  width: $inputs-width;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  & > button {
+    width: 100%;
+    display: block;
+  }
+}
+
+.info {
+  margin-top: 2rem;
+  padding-right: $padding-right;
+  display: flex;
+  justify-content: flex-end;
+}
+
+table {
+  margin-top: 12rem;
+  width: auto;
+  border-collapse: collapse;
+  // background: #000;
+  th {
+    font-size: 1.5rem;
+    color: $legend-color;
+    border-bottom: 1px $button-bg-color solid;
+  }
+  th,
+  td,
+  tr {
+    text-align: right;
+  }
+  td,
+  th {
+    padding: 1rem;
+    min-width: 15rem;
+  }
+  tbody {
+    tr {
+      font-family: $normal-font;
+      font-size: 1.2rem;
+    }
+    & > tr:nth-child(even) {
+      background-color: $table-raw-bg;
+    }
+    tr.edit {
+      background: $edit-highlied;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+    transform: translateY(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+    transform: translateY(-50%);
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
+    transform: translateY(-50%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateX(-100%);
+    transform: translateY(-50%);
+  }
+}
+
+@media print {
+  .filter {
+    position: static;
+    button,
+    input {
+      display: none;
+    }
+  }
+  form {
+    display: none;
+  }
+  table {
+    margin-top: 3rem;
+    td,
+    th {
+      padding: 1rem;
+      min-width: 12.5rem;
+    }
+  }
+}

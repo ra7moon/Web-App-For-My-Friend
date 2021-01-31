@@ -1,0 +1,119 @@
+// classes to extend
+%footer {
+    font-size: 10px;
+    height: 3px;
+}
+
+.footer {
+    @extend %footer;
+    border: 1px solid black;
+}
+// / importing othern style files
+@import 'sooo'; // we can use it inside classes as well
+.import {
+    @import 'sooo';
+}
+// //mixins
+@mixin bRadius($r) {
+    -webkit-border-radius: $r;
+    -moz-border-radius: $r;
+    -o-border-radius: $r;
+    -ms-border-radius: $r;
+    border-radius: $r;
+}
+
+div {
+    @include bRadius(20px);
+}
+
+// // if else condition
+@if $r == 5 {
+    $r: 2;
+
+    // do sth
+}
+@else
+{
+    $r: 2;
+    // do this
+}
+
+// how to use vars as style props
+$repo: font;
+div {
+    #{$repo}-size: 20px; // == font-size: 20px;
+}
+
+// for loop
+
+$gridBaise: 12;
+
+%grid {
+    float: left;
+    border: 1px solid #aaa;
+    background-color: #eee;
+    padding: 10px;
+    box-sizing: border-box;
+    font-family: 'Roboto';
+}
+
+@for $i from 1 through $gridBaise {
+    .col-#{$i} {
+        width: (100% /($gridBaise / $i));
+        @extend %grid;
+    }
+}
+
+// /each
+
+$socialList: facebook twitter instgram;
+@each $social in $socialList {
+    .#{$social} {
+        font-size: 20px;
+    }
+}
+
+// /each multiple assignment
+@each $social,
+$color,
+$border in(facebook, green, 1px),
+(twitter, grey, 2px),
+(codepen, blue, 3px) {
+    .#{$social} {
+        color: $color;
+        border: $border;
+        font-size: 20px;
+    }
+}
+
+// each with map (key : value);
+$map: (
+    h1: 50px,
+    h2: 20px
+);
+@each $key,
+$val in $map {
+    #{$key} {
+        font-size: $val;
+    }
+}
+// while loop
+$x: 0;
+@while $x < 13 {
+    .col-#{$x} {
+        font-size: 10px;
+    }
+    $x: $x + 1;
+}
+
+// functions 
+@function increaseFont($ele){
+    $font: 16px;
+    $result: 0;
+    @if $ele > $font {
+        $result: 1px;
+    }@else{
+        $result: 40px;
+    }
+    @return $result;
+}
